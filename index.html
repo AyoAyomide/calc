@@ -1,101 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="src/js/vue/vue.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <switch-btn 
+      <switch-btn
         v-on:change-btc="Bitcoin"
         v-on:change-gfc="Giftcard"
-        ></switch-btn>
-        <btc-body v-if="BtcSee"  v-on:update-btc="UpInput" v-on:update-dol="UpInput"></btc-body>
-        <gfc-body v-if="GfcSee"></gfc-body>
-        <!-- <input v-model="inText"> -->
-        <!-- <input v-bind:value="getInput * 2"> -->
-        <!-- <p>show input: {{getInput * 2}} </p>  -->
+      ></switch-btn>
+      <btc-body
+        v-if="BtcSee"
+        v-on:update-btc="UpInput"
+        v-on:update-dol="UpInput"
+      ></btc-body>
+      <gfc-body v-if="GfcSee"></gfc-body>
     </div>
+    <script src="src/js/bitcoin.js"></script>
+    <script src="src/js/giftcards.js"></script>
     <script>
-        Vue.component('switch-btn',{
-            // data : function (){},
-            template : `<div class="switch_func">
+      Vue.component("switch-btn", {
+        template: `<div class="switch_func">
                 <button v-on:click="$emit('change-btc')">Bitcoin</button>
                 <button v-on:click="$emit('change-gfc')">Giftcard</button>
-                </div>`
-        });
-        Vue.component('btc-body',{
-            props:{
-                value : '',
-            },
-            template : `<div>
-            <p>bitcoin</p>
-            <input 
-            v-bind:value="this.$parent.convert2btc"
-            v-on:input="updateBtc({type : 'Dollar',value : $event.target.value})"
-            placeholder="enter bitcoin"
-            >
-            <p>dollar</p>
-            <input
-            v-bind:value="this.$parent.convert2dollar"
-            v-on:input="updateBtc({type : 'Bitcoin',value : $event.target.value})"
-            placeholder="enter dollar"
-            >
-            <p>we will pay : {{this.$parent.convert2dollar * this.$parent.companyRate}} naira</p>
-            </div>
-            `,
-            methods : {
-                updateBtc : function (event){
-                    let inpValue = parseInt(event.value);
-                    if(inpValue){
-                        if(event.type == 'Bitcoin'){
-                            this.$emit('update-btc',{type : 'Bitcoin',value : inpValue});
-                        }else if(event.type == 'Dollar'){
-                            this.$emit('update-dol',{type : 'Dollar',value : inpValue});
-                        }
-                    }
-                },
+                </div>`,
+      });
+      var app = new Vue({
+        el: "#app",
+        data: {
+          BtcSee: true,
+          GfcSee: false,
+          GlobalRate: 1,
+          convert2btc: "",
+          convert2dollar: "",
+          companyRate: 2,
+        },
+        methods: {
+          Bitcoin: function (event) {
+            this.BtcSee = true;
+            this.GfcSee = false;
+          },
+          Giftcard: function () {
+            this.GfcSee = true;
+            this.BtcSee = false;
+          },
+          UpInput: function (data) {
+            if (data.type == "Bitcoin") {
+              this.convert2btc = data.value + this.GlobalRate;
+              this.convert2dollar = data.value;
+            } else if (data.type == "Dollar") {
+              this.convert2btc = data.value;
+              this.convert2dollar = data.value - this.GlobalRate;
             }
-        });
-        Vue.component('gfc-body',{
-            template : `<div>
-            <h1>hello am giftcard</h1>
-            </div>
-            `
-        });
-        var app = new Vue({
-            el:"#app",
-            data :{
-                BtcSee : true,
-                GfcSee : false,
-                GlobalRate : 1,
-                convert2btc : '',
-                convert2dollar : '',
-                companyRate : 2
-            },
-            methods : {
-                Bitcoin : function (event){
-                   this.BtcSee = true;
-                   this.GfcSee = false;
-                },
-                Giftcard : function (){
-                    this.GfcSee = true;
-                    this.BtcSee = false;
-                },
-                UpInput : function (data){
-                    if(data.type == 'Bitcoin'){
-                        this.convert2btc = data.value + this.GlobalRate;
-                        this.convert2dollar = data.value;
-                    }else if(data.type == 'Dollar'){
-                        this.convert2btc = data.value;
-                        this.convert2dollar = data.value - this.GlobalRate;
-                    }
-                }
-            }
-        })
+          },
+        },
+      });
+      //         fetch('https://blockchain.info/tobtc?currency=USD&value=1')
+      //   .then(response => response.json())
+      //   .then(data => console.log(data));
     </script>
-</body>
-
+  </body>
 </html>
