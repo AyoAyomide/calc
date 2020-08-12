@@ -1,3 +1,84 @@
+@import "root/root";
+$bitcoin_gre : linear-gradient(to bottom, #FB9715, #FF7F2A);
+$bitcoin : #FB9715;
+$giftcard_gre : linear-gradient(to bottom, #65BAE6, #453AEF);
+$giftcard : #453AEF;
+@mixin placeholder {
+    
+}
 .switch_func{
     border: 1px solid black;
+    text-align: center;
+    p{
+        @include normal_F;
+    }
+    .switch_wrap{
+        border: 1px solid transparent;
+        display: inline-block;
+        padding:5px;
+        margin-bottom:1em;
+        @include round(6px);
+        @include shadow;
+        button{
+            @include button_style;
+            padding:10px 20px;
+            margin: 5px;
+            border-color:transparent;
+            color: white;
+        }
+        .btc{
+            border:1px solid $bitcoin;
+            background-color: transparent;
+            color:$bitcoin;
+        }
+        .btcAct{background-image: $bitcoin_gre;}
+        .gfcAct{background-image: $giftcard_gre;}
+        .gfc{
+            border:1px solid $giftcard;
+            background-color: transparent;
+            color: $giftcard;
+        }
+    }
+}
+.btc-wrap{
+    border: 1px solid grey;
+    text-align: center;
+    p{
+        @include normal_F;
+        font-weight: normal;
+    }
+    .right-wrap{
+        @include shadow;
+        @include round(3px);
+        display: inline-block;
+        padding: 20px;
+        p{
+            margin-top:0px;
+            text-align: left;
+            font-size:14px;
+            margin-left:20px;
+        }
+        input{
+            @include input_style;
+            @include icon_style(left,4px);
+        }
+        .usd{
+            @include icon_style(left,-1.6em);
+        }
+        .calculate-wrap{
+            display: inline-block;
+            padding: 15px 0px;
+            button{
+                @include button_icon;
+                @include round;
+                @include icon_style(left,-4.4em);
+                @include shadow;
+                background-color: transparent;
+                border-color: transparent;
+            }
+            p{
+                margin: 6px;
+            }
+        }
+    }
 }

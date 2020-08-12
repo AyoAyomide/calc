@@ -9,9 +9,12 @@
   </head>
   <body>
     <div id="app">
+      
       <switch-btn
         v-on:change-btc="Bitcoin"
         v-on:change-gfc="Giftcard"
+        v-bind:btcstyle="BtcStyle"
+        v-bind:gfcstyle="GfcStyle"
       ></switch-btn>
       <btc-body
         v-if="BtcSee"
@@ -24,9 +27,13 @@
     <script src="src/js/giftcards.js"></script>
     <script>
       Vue.component("switch-btn", {
+        props:['btcstyle','gfcstyle'],
         template: `<div class="switch_func">
-                <button v-on:click="$emit('change-btc')">Bitcoin</button>
-                <button v-on:click="$emit('change-gfc')">Giftcard</button>
+                <p>Exchange Rate</p>
+                <div class="switch_wrap">
+                <button v-bind:class="btcstyle" v-on:click="$emit('change-btc')">Bitcoin</button>
+                <button v-bind:class="gfcstyle" v-on:click="$emit('change-gfc')">Giftcard</button>
+                </div>
                 </div>`,
       });
       var app = new Vue({
@@ -38,15 +45,21 @@
           convert2btc: "",
           convert2dollar: "",
           companyRate: 2,
+          BtcStyle:"btcAct",
+          GfcStyle:"gfc"
         },
         methods: {
           Bitcoin: function (event) {
             this.BtcSee = true;
             this.GfcSee = false;
+            this.BtcStyle = "btcAct";
+            this.GfcStyle = "gfc";
           },
           Giftcard: function () {
             this.GfcSee = true;
             this.BtcSee = false;
+            this.BtcStyle = "btc";
+            this.GfcStyle = "gfcAct";
           },
           UpInput: function (data) {
             if (data.type == "Bitcoin") {
