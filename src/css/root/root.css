@@ -1,1 +1,27 @@
-/* No CSS *//*# sourceMappingURL=root.css.map */
+input:focus,
+input:hover[type=number]::-webkit-inner-spin-button,
+input:focus,
+input:hover[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+  outline: none;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: #8F8F8F;
+}
+
+::-moz-placeholder {
+  color: #8F8F8F;
+}
+
+:-ms-input-placeholder {
+  color: #8F8F8F;
+}
+
+:-moz-placeholder {
+  color: #8F8F8F;
+}
+/*# sourceMappingURL=root.css.map */

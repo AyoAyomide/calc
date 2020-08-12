@@ -4,7 +4,7 @@ Vue.component("btc-body", {
   },
   template: `<div class="btc-wrap">
     <p>Rate Converter</p>
-    <div class="right-wrap">
+    <div class="left-wrap">
     <p>Bitcoin</p>
     <input 
     v-bind:value="this.$parent.convert2btc"
@@ -19,7 +19,14 @@ Vue.component("btc-body", {
     v-on:input="updateBtc({type : 'Bitcoin',value : $event.target.value})"
     placeholder="Enter Usd"
     ></div>
-    <p>we will pay : {{this.$parent.convert2dollar * this.$parent.companyRate}} naira</p>
+    <div class="right-wrap">
+    <button class="convert-btn"></button>
+    <h3>Total Payout</h3>
+    <span>Rate : <big>#{{this.$parent.companyRate}}.00</big></span><br>
+    <p class="payout"># {{this.$parent.convert2dollar * this.$parent.companyRate}}.00</p><br>
+    <div class="bnk-label"><p class="left">Bank Deposit</p><p class="right">1000 NGN</p></div>
+    <p class="bnk-btc">1 BTC</p>
+    </div>
     </div>
     `,
   methods: {

@@ -1,15 +1,39 @@
+// varable
+$grey1:#E3E1E1;
+$grey2:#8F8F8F;
+$lemon : #92CFA8;
+$bitcoin_gre : linear-gradient(to bottom, #FB9715, #FF7F2A);
+$bitcoin : #FB9715;
+$giftcard_gre : linear-gradient(to bottom, #65BAE6, #453AEF);
+$giftcard : #453AEF;
+$lemon_gre: linear-gradient(to bottom, #A3F5C0, #12EE60);
+// default
+input:focus,
+input:hover[type=number]::-webkit-inner-spin-button,
+input:focus,
+input:hover[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: textfield;
+	appearance: none;
+	outline: none;
+	outline: none;
+}
+::-webkit-input-placeholder {color: $grey2;}
+::-moz-placeholder {color: $grey2;}
+:-ms-input-placeholder {color: $grey2;}
+:-moz-placeholder {color: $grey2;}
 // mixin
 @mixin button_style {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid grey;
+    border: 1px solid $grey1;
     border-radius:5px;
 }
 @mixin input_style {
     padding: 10px;
     padding-left:40px;
     font-size: 16px;
-    border:2px solid #E3E1E1;
+    border:2px solid $grey1;
     border-radius:5px;
 }
 
@@ -18,7 +42,7 @@
 }
 @mixin normal_F {
     font-size: 18px;
-    color: grey;
+    color: $grey2;
     font-family: sans-serif;
 }
 // for colors
@@ -32,7 +56,7 @@
     width: 35px;
     height: 35px;
     padding: 0px;
-    border:2px solid grey;
+    border:2px solid $grey1;
 }
 @mixin icon_style($x:auto,$y:auto){
     background-repeat: no-repeat;
