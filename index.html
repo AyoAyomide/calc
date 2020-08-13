@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="src/js/vue/vue.js"></script>
-    <link rel="stylesheet" href="src/css/index.css">
+    <link rel="stylesheet" href="src/css/index.css" />
   </head>
   <body>
     <div id="app">
-      
       <switch-btn
         v-on:change-btc="Bitcoin"
         v-on:change-gfc="Giftcard"
@@ -27,7 +26,7 @@
     <script src="src/js/giftcards.js"></script>
     <script>
       Vue.component("switch-btn", {
-        props:['btcstyle','gfcstyle'],
+        props: ["btcstyle", "gfcstyle"],
         template: `<div class="switch_func">
                 <p>Exchange Rate</p>
                 <div class="switch_wrap">
@@ -41,12 +40,16 @@
         data: {
           BtcSee: true,
           GfcSee: false,
-          GlobalRate: 1,
+          getRate: fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+            .then((response) => response.text())
+            .then(function (text) {
+              sessionStorage.setItem('btcRate',text);
+            }),
           convert2btc: "",
           convert2dollar: "",
-          companyRate: 2,
-          BtcStyle:"btcAct",
-          GfcStyle:"gfc"
+          companyRate: 410,
+          BtcStyle: "btcAct",
+          GfcStyle: "gfc",
         },
         methods: {
           Bitcoin: function (event) {
@@ -62,12 +65,13 @@
             this.GfcStyle = "gfcAct";
           },
           UpInput: function (data) {
+            getRate = JSON.parse(sessionStorage.getItem('btcRate'));
             if (data.type == "Bitcoin") {
-              this.convert2btc = data.value + this.GlobalRate;
+              this.convert2btc = data.value / getRate.bpi.USD.rate_float;
               this.convert2dollar = data.value;
             } else if (data.type == "Dollar") {
               this.convert2btc = data.value;
-              this.convert2dollar = data.value - this.GlobalRate;
+              this.convert2dollar = data.value * getRate.bpi.USD.rate_float;
             }
           },
         },
