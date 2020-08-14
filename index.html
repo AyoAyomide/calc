@@ -15,11 +15,7 @@
         v-bind:btcstyle="BtcStyle"
         v-bind:gfcstyle="GfcStyle"
       ></switch-btn>
-      <btc-body
-        v-if="BtcSee"
-        v-on:update-btc="UpInput"
-        v-on:update-dol="UpInput"
-      ></btc-body>
+      <btc-body v-if="BtcSee"></btc-body>
       <gfc-body v-if="GfcSee"></gfc-body>
     </div>
     <script src="src/js/bitcoin.js"></script>
@@ -40,14 +36,6 @@
         data: {
           BtcSee: true,
           GfcSee: false,
-          getRate: fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
-            .then((response) => response.text())
-            .then(function (text) {
-              sessionStorage.setItem('btcRate',text);
-            }),
-          convert2btc: "",
-          convert2dollar: "",
-          companyRate: 410,
           BtcStyle: "btcAct",
           GfcStyle: "gfc",
         },
@@ -63,16 +51,6 @@
             this.BtcSee = false;
             this.BtcStyle = "btc";
             this.GfcStyle = "gfcAct";
-          },
-          UpInput: function (data) {
-            getRate = JSON.parse(sessionStorage.getItem('btcRate'));
-            if (data.type == "Bitcoin") {
-              this.convert2btc = data.value / getRate.bpi.USD.rate_float;
-              this.convert2dollar = data.value;
-            } else if (data.type == "Dollar") {
-              this.convert2btc = data.value;
-              this.convert2dollar = data.value * getRate.bpi.USD.rate_float;
-            }
           },
         },
       });
