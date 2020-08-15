@@ -43,10 +43,28 @@ Vue.component("btc-body", {
     `,
   methods: {
     calcPayout: function (data) {
-      this.payout = data;
+      let ranges = {
+        range1:[20,49,410],
+        range2:[50,199,430],
+        range3:[200,999,461],
+        range4:[1000,4999,462],
+        range5:[5000,10000,463]
+      }
+      let rate = [];
+      let Input = Number(this.usdValue);
+      for(const range in ranges){
+        if(Input <= ranges[range][1] && Input >= ranges[range][0]){
+          rate = [ranges[range][2]];
+        }else if(Input > 10000){
+          rate = [ranges[range][2]];
+        }
+      }
+      calc = Input * rate;
+      this.companyRate = Number(rate);
+      this.payout = calc != Number.isNaN ? calc : 0;
     },
     updateInput: function (event) {
-      let input = parseInt(event.value);
+      let input = parseFloat(event.value);
       let getRate = JSON.parse(sessionStorage.getItem('btcRate'))
       if(event.value != ''){
         if(event.type == "btc"){
@@ -57,7 +75,7 @@ Vue.component("btc-body", {
           this.usdValue = input;
         }
       }
-      // this.payout = input;
+      this.calcPayout();
     },
   },
 });
