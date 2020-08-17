@@ -305,6 +305,7 @@ p {
 }
 
 .gfc-wrap .left-wrap {
+  padding-top: 35px;
   display: inline-block;
 }
 
