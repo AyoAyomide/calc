@@ -288,12 +288,11 @@ p {
   bottom: -2.5em;
   margin-left: -2em;
   border-width: 1em;
-  border-image-source: linear-gradient(to bottom, #A3F5C0, #12EE60);
-  border-image-slice: 1;
+  border-color: #FB9715;
   background-repeat: no-repeat;
-  background-position: -2px -6.9em, center;
-  background-image: url(../img/icon.svg), -webkit-gradient(linear, left top, left bottom, from(#A3F5C0), to(#12EE60));
-  background-image: url(../img/icon.svg), linear-gradient(to bottom, #A3F5C0, #12EE60);
+  background-position: -2px -6.9em;
+  background-color: #FB9715;
+  background-image: url(../img/icon.svg);
 }
 
 .gfc-wrap {
@@ -301,9 +300,8 @@ p {
 }
 
 .gfc-wrap .right-wrap .convert-btn {
-  border-image-source: linear-gradient(to bottom, #877AFF, #453AEF);
-  background-image: url(../img/icon.svg), -webkit-gradient(linear, left top, left bottom, from(#877AFF), to(#453AEF));
-  background-image: url(../img/icon.svg), linear-gradient(to bottom, #877AFF, #453AEF);
+  border-color: #453AEF;
+  background-color: #453AEF;
 }
 
 .gfc-wrap .left-wrap {

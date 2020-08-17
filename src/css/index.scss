@@ -164,11 +164,11 @@ p {
       bottom: -2.5em;
       margin-left: -2em;
       border-width: 1em;
-      border-image-source: $lemon_gre;
-      border-image-slice: 1;
+      border-color: $bitcoin;
       background-repeat: no-repeat;
-      background-position: -2px -6.9em, center;
-      background-image: url(../img/icon.svg), $lemon_gre;
+      background-position: -2px -6.9em;
+      background-color:$bitcoin;
+      background-image: url(../img/icon.svg);
     }
   }
 }
@@ -177,8 +177,8 @@ p {
   text-align: center;
   .right-wrap{
     .convert-btn{
-        border-image-source: $giftcard_gre;
-        background-image: url(../img/icon.svg),$giftcard_gre;
+        border-color: $giftcard;
+        background-color:$giftcard;
       }
   }
   .left-wrap {
