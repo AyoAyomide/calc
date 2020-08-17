@@ -1,262 +1,284 @@
 @import "root/root";
-body{
-    background-repeat: no-repeat;
-    background-position:bottom;
-    background-size:contain;
-    background-attachment:scroll;
-    background-image: url(../img/vect/bottom.svg);
-    padding-bottom: 3em;
+body {
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  background-attachment: scroll;
+  background-image: url(../img/vect/bottom.svg);
+  padding-bottom: 3em;
 }
-p{
+p {
+  @include normal_F;
+}
+.switch_func {
+  text-align: center;
+  .switch_wrap {
+    border: 1px solid transparent;
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 1em;
+    @include round(6px);
+    @include shadow;
+    button {
+      @include button_style;
+      padding: 10px 20px;
+      margin: 5px;
+      border-color: transparent;
+      color: white;
+    }
+    .btc {
+      border: 1px solid $bitcoin;
+      background-color: transparent;
+      color: $bitcoin;
+    }
+    .btcAct {
+      background-image: $bitcoin_gre;
+    }
+    .gfcAct {
+      background-image: $giftcard_gre;
+    }
+    .gfc {
+      border: 1px solid $giftcard;
+      background-color: transparent;
+      color: $giftcard;
+    }
+  }
+}
+.btc-wrap,
+.gfc-wrap {
+  padding: 10px 0px;
+  text-align: center;
+  p {
+    font-weight: normal;
+  }
+  .left-wrap {
+    @include shadow;
+    @include round(3px);
+    display: inline-block;
+    padding: 20px;
+    padding-bottom: 4em;
+    width: 80%;
+    border-bottom: 20px solid transparent;
+    @include icon_style(center, bottom);
+    background-image: url(../img/vect/flower.png);
+    background-origin: padding-box;
+    p {
+      margin-top: 0px;
+      text-align: left;
+      font-size: 14px;
+      margin-left: 20px;
+    }
+    .input {
+      @include input_style;
+      @include icon_style(left, 4px);
+      color: $grey2;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .usd {
+      @include icon_style(left, -1.6em);
+    }
+    .calculate-wrap {
+      display: inline-block;
+      padding: 15px 0px;
+      button {
+        @include button_icon;
+        @include round;
+        @include icon_style(left, -4.4em);
+        @include shadow;
+        background-color: transparent;
+        border-color: transparent;
+      }
+      p {
+        margin: 6px;
+      }
+    }
+  }
+  .right-wrap {
+    padding: 20px;
+    width: 80%;
+    margin: 15px auto;
+    display: inline-block;
     @include normal_F;
+    @include shadow;
+    position: relative;
+    h3 {
+      font-size: 1.8em;
+      font-weight: 100;
+      margin: 20px;
+    }
+    span {
+      float: right;
+      color: $grey2;
+      font-size: 14px;
+      big {
+        padding-left: 10px;
+        color: $lemon;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+    .payout {
+      display: inline-block;
+      padding: 10px;
+      font-size: 2em;
+      margin: 5px;
+      word-break: break-all;
+      color: $grey2;
+      @include round(5px);
+      @include shadow;
+    }
+    .bnk-label {
+      display: inline-block;
+      width: 100%;
+      p {
+        @include icon_style(-4px, -8.7em);
+      }
+      .right {
+        background-position: -4px -10.8em;
+      }
+    }
+    .bnk-label > p,
+    .bnk-btc {
+      float: left;
+      margin: 10px 0px;
+      font-size: 14px;
+      padding: 5px;
+      padding-left: 1.8em;
+    }
+    .bnk-label > .right,
+    .bnk-btc {
+      float: right;
+    }
+    .bnk-btc {
+      margin: 0px;
+      @include icon_style(-4px, -3px);
+    }
+    .convert-btn {
+      @include button_icon;
+      @include round;
+      @include shadow;
+      width: 4em;
+      height: 4em;
+      position: absolute;
+      bottom: -2.5em;
+      margin-left: -2em;
+      border-width: 1em;
+      border-image-source: $lemon_gre;
+      border-image-slice: 1;
+      background-repeat: no-repeat;
+      background-position: -2px -6.9em, center;
+      background-image: url(../img/icon.svg), $lemon_gre;
+    }
+  }
 }
-.switch_func{
-    text-align: center;
-    .switch_wrap{
-        border: 1px solid transparent;
-        display: inline-block;
-        padding:5px;
-        margin-bottom:1em;
-        @include round(6px);
-        @include shadow;
-        button{
-            @include button_style;
-            padding:10px 20px;
-            margin: 5px;
-            border-color:transparent;
-            color: white;
-        }
-        .btc{
-            border:1px solid $bitcoin;
-            background-color: transparent;
-            color:$bitcoin;
-        }
-        .btcAct{background-image: $bitcoin_gre;}
-        .gfcAct{background-image: $giftcard_gre;}
-        .gfc{
-            border:1px solid $giftcard;
-            background-color: transparent;
-            color: $giftcard;
-        }
+// giftcard style
+.gfc-wrap {
+  text-align: center;
+  .right-wrap{
+    .convert-btn{
+        border-image-source: $giftcard_gre;
+        background-image: url(../img/icon.svg),$giftcard_gre;
+      }
+  }
+  .left-wrap {
+    display: inline-block;
+    .card-wrap {
+      display: inline-block;
+      width: 100%;
+      overflow: auto;
+      white-space: nowrap;
     }
-}
-.btc-wrap,.gfc-wrap{
-    padding:10px 0px; 
-    text-align: center;
-    p{
-        font-weight: normal;
+    .cards {
+      display: inline-block;
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      .card_img {
+        width: 6em;
+        height: 3.6em;
+        margin-bottom: 5px;
+        @include icon_style(center, 0px);
+        background-size: contain;
+      }
+      input {
+        float: right;
+        width: auto;
+      }
+      label{
+          color:$grey2;
+          text-transform: capitalize;
+      }
     }
-    .left-wrap{
-        @include shadow;
-        @include round(3px);
-        display: inline-block;
-        padding: 20px;
-        padding-bottom:4em;
-        width: 80%;
-        border-bottom:20px solid transparent;
-        @include icon_style(center,bottom);
-        background-image: url(../img/vect/flower.png);
-        background-origin: padding-box;
-        p{
-            margin-top:0px;
-            text-align: left;
-            font-size:14px;
-            margin-left:20px;
-        }
-        .input{
-            @include input_style;
-            @include icon_style(left,4px);
-            color: $grey2;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .usd{
-            @include icon_style(left,-1.6em);
-        }
-        .calculate-wrap{
-            display: inline-block;
-            padding: 15px 0px;
-            button{
-                @include button_icon;
-                @include round;
-                @include icon_style(left,-4.4em);
-                @include shadow;
-                background-color: transparent;
-                border-color: transparent;
-            }
-            p{
-                margin: 6px;
-            }
-        }
+    .cards:hover {
+      border: 1px solid $grey1;
     }
-    .right-wrap{
-        padding: 20px;
-        width: 80%;
-        margin:15px auto;
-        display: inline-block;
-        @include normal_F;
-        @include shadow;
-        position: relative;
-        h3{
-            font-size: 1.8em;
-            font-weight: 100;
-            margin:20px;
-        }
-        span{
-            float: right;
-            color: $grey2;
-            font-size:14px;
-            big{
-                padding-left: 10px;
-                color: $lemon;
-                font-size:18px;
-                font-weight: bold;
-            }
-        }
-        .payout{
-            display: inline-block;
-            padding:10px;
-            font-size:2em;
-            margin:5px;
-            word-break: break-all;
-            color: $grey2;
-            @include round(5px);
-            @include shadow;
-        }
-        .bnk-label{
-            display: inline-block;
-            width: 100%;
-            p{
-                @include icon_style(-4px,-8.7em);
-            }
-            .right{
-                background-position:-4px -10.8em;
-            }
-        }
-        .bnk-label>p,.bnk-btc{
-            float: left;
-            margin:10px 0px;
-            font-size:14px;
-            padding:5px;
-            padding-left:1.8em;
-        }
-        .bnk-label>.right,.bnk-btc{
-            float: right;
-        }
-        .bnk-btc{
-            margin:0px;
-            @include icon_style(-4px,-3px);
-        }
-        .convert-btn{
-            @include button_icon;
-            @include round;
-            @include shadow;
-            width: 4em;
-            height: 4em;
-            position: absolute;
-            bottom:-2.5em; 
-            margin-left:-2em;
-            border-width:1em;
-            border-image-source:$lemon_gre;
-            border-image-slice:1;
-            background-repeat: no-repeat;
-            background-position:-2px -6.9em,center;
-            background-image:url(../img/icon.svg),$lemon_gre,;
-        }
+    .cardPicked {
+      border: 1px solid $giftcard;
     }
-}
-@media screen and (min-width:43.5em){
-    body{
-        text-align: center;
-        background-attachment: fixed;
-        padding-bottom:0em;
-    }
-    .btc-wrap{
-        display: inline-block;
-        .left-wrap,.right-wrap{
-            width: auto;
-            max-width: 18em;
+    .picker-wrap {
+      border: 2px solid $grey1;
+      margin: 15px 0px;
+      padding: 0px 30px;
+      @include round(5px);
+      select {
+        @include input_style;
+        border: none;
+        width: 100%;
+        color: $grey2;
+        text-transform: capitalize;
+        option {
+          font-size: 14px;
         }
-        .right-wrap{
-            box-shadow:5px 2px 10px rgba(61, 7, 7, 0.1);
-            float:right;
-            padding-left:2em;
-            .convert-btn{
-                left:0px;
-                top:50%;
-                margin-top:-2em;
-            }
-            
-        }
+      }
+      select:focus {
+        outline: none;
+      }
     }
+    .picked {
+      background-color: $giftcard;
+      border-color: $giftcard;
+      @include shadow;
+      select {
+        background-color: transparent;
+        color: white;
+        option {
+          color: $grey2;
+        }
+      }
+    }
+  }
 }
 
-// giftcard style
-.gfc-wrap{
-    border: 1px solid grey;
-    text-align: center;
-    .left-wrap{
-        display: inline-block;
-        .input{
-            
-        }
-        .card-wrap{
-            display: inline-block;
-            width:100%;
-            overflow: auto;
-            white-space: nowrap;
-        }
-        .cards{
-            width: 6em;
-            display: inline-block;
-            padding: 4em 5px 5px; 
-            margin:5px;
-            border-radius:5px;
-            @include icon_style(center,8px);
-            background-image: url(../img/cards/itunes.png);
-            background-size: 6em;
-            background-origin:border-box;
-            border:1px solid transparent;
-            input{
-                float: right;
-                width: auto;
-            }
-        }
-        .cards:hover{
-            border:1px solid $grey1;
-        }
-        .cardPicked{
-            border: 1px solid blue;
-        }
-        .picker-wrap{
-            border: 2px solid $grey1;
-            margin:15px 0px;
-            padding:0px 30px;
-            @include round(5px);
-            select{
-                @include input_style;
-                border:none;
-                width: 100%;
-                color:$grey2;
-                text-transform: capitalize;
-                option{
-                    outline: 1px solid blue;
-                    font-size: 14px;
-                }
-            }
-            select:focus{outline: none;}
-        }
-        .picked{
-            background-color: blue;
-            border-color: blue;
-            @include shadow;
-            select{
-                background-color: transparent;
-                color:white;
-                option{
-                    color: $grey2;
-                }
-            }
-        }
+@media screen and (min-width: 43.5em) {
+    body {
+      text-align: center;
+      background-attachment: fixed;
+      padding-bottom: 0em;
     }
-}
+    .btc-wrap,.gfc-wrap {
+      display: inline-block;
+      .left-wrap,
+      .right-wrap {
+        width: auto;
+        max-width: 18em;
+      }
+      .right-wrap {
+        box-shadow: 5px 2px 10px rgba(61, 7, 7, 0.1);
+        float: right;
+        padding-left: 2em;
+        .convert-btn {
+          left: 0px;
+          top: 50%;
+          margin-top: -2em;
+        }
+      }
+    }
+    .gfc-wrap{
+      .left-wrap,
+      .right-wrap {
+       padding:20px 2.5em;
+      }
+    }
+  }

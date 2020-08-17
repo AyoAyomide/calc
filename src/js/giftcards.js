@@ -34,10 +34,11 @@ Vue.component("gfc-cards", {
   },
   data: function () {
     return {
+      cloud_src:"https://res.cloudinary.com/db5t0lizu/image/upload/",
       giftCards: [
-        { title: "itunes",style:'' },
-        { title: "amazon",style:'' },
-        { title: "playstore",style:'' },
+        { title: "itunes",style:'',img_id:'v1597674846/cards/itunes_vhi2q9.png'},
+        { title: "amazon",style:'',img_id:'v1597674846/cards/amazon_fnmlpb.png'},
+        { title: "google play",style:'',img_id:'v1597674847/cards/googleplay_igcnab.png'},
       ],
     };
   },
@@ -49,6 +50,7 @@ Vue.component("gfc-cards", {
             class="cards"
             v-bind:class="cards.style"
             >
+            <div class="card_img" v-bind:class="cards.title" v-bind:style="{'background-image':'url('.concat(cloud_src,cards.img_id)+')'}"></div>
                 <input 
                 type="radio" name="card"
                 v-bind:value="cards.title"
