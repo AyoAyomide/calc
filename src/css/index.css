@@ -371,7 +371,7 @@ p {
   width: 100%;
   color: #8F8F8F;
   text-transform: capitalize;
-  background-color: transparent;
+  background-color: white;
 }
 
 .gfc-wrap .left-wrap .picker-wrap select option {
