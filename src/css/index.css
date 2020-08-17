@@ -1,6 +1,7 @@
-input:focus,
+input[type=number],
+input[type=text],
 input:hover[type=number]::-webkit-inner-spin-button,
-input:focus,
+input:focus[type=number]::-webkit-inner-spin-button,
 input:hover[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: textfield;
@@ -34,14 +35,14 @@ body {
   padding-bottom: 3em;
 }
 
-.switch_func {
-  text-align: center;
-}
-
-.switch_func p {
+p {
   font-size: 18px;
   color: #8F8F8F;
   font-family: sans-serif;
+}
+
+.switch_func {
+  text-align: center;
 }
 
 .switch_func .switch_wrap {
@@ -87,19 +88,16 @@ body {
   color: #453AEF;
 }
 
-.btc-wrap {
+.btc-wrap, .gfc-wrap {
   padding: 10px 0px;
   text-align: center;
 }
 
-.btc-wrap p {
-  font-size: 18px;
-  color: #8F8F8F;
-  font-family: sans-serif;
+.btc-wrap p, .gfc-wrap p {
   font-weight: normal;
 }
 
-.btc-wrap .left-wrap {
+.btc-wrap .left-wrap, .gfc-wrap .left-wrap {
   -webkit-box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.2);
           box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
@@ -116,14 +114,14 @@ body {
   background-origin: padding-box;
 }
 
-.btc-wrap .left-wrap p {
+.btc-wrap .left-wrap p, .gfc-wrap .left-wrap p {
   margin-top: 0px;
   text-align: left;
   font-size: 14px;
   margin-left: 20px;
 }
 
-.btc-wrap .left-wrap input {
+.btc-wrap .left-wrap .input, .gfc-wrap .left-wrap .input {
   padding: 10px;
   padding-left: 40px;
   font-size: 16px;
@@ -139,19 +137,19 @@ body {
           box-sizing: border-box;
 }
 
-.btc-wrap .left-wrap .usd {
+.btc-wrap .left-wrap .usd, .gfc-wrap .left-wrap .usd {
   background-repeat: no-repeat;
   background-position: left -1.6em;
   background-image: url(../img/icon.png);
   background-image: url(../img/icon.svg);
 }
 
-.btc-wrap .left-wrap .calculate-wrap {
+.btc-wrap .left-wrap .calculate-wrap, .gfc-wrap .left-wrap .calculate-wrap {
   display: inline-block;
   padding: 15px 0px;
 }
 
-.btc-wrap .left-wrap .calculate-wrap button {
+.btc-wrap .left-wrap .calculate-wrap button, .gfc-wrap .left-wrap .calculate-wrap button {
   width: 35px;
   height: 35px;
   padding: 0px;
@@ -167,11 +165,11 @@ body {
   border-color: transparent;
 }
 
-.btc-wrap .left-wrap .calculate-wrap p {
+.btc-wrap .left-wrap .calculate-wrap p, .gfc-wrap .left-wrap .calculate-wrap p {
   margin: 6px;
 }
 
-.btc-wrap .right-wrap {
+.btc-wrap .right-wrap, .gfc-wrap .right-wrap {
   padding: 20px;
   width: 80%;
   margin: 15px auto;
@@ -184,26 +182,26 @@ body {
   position: relative;
 }
 
-.btc-wrap .right-wrap h3 {
+.btc-wrap .right-wrap h3, .gfc-wrap .right-wrap h3 {
   font-size: 1.8em;
   font-weight: 100;
   margin: 20px;
 }
 
-.btc-wrap .right-wrap span {
+.btc-wrap .right-wrap span, .gfc-wrap .right-wrap span {
   float: right;
   color: #8F8F8F;
   font-size: 14px;
 }
 
-.btc-wrap .right-wrap span big {
+.btc-wrap .right-wrap span big, .gfc-wrap .right-wrap span big {
   padding-left: 10px;
   color: #92CFA8;
   font-size: 18px;
   font-weight: bold;
 }
 
-.btc-wrap .right-wrap .payout {
+.btc-wrap .right-wrap .payout, .gfc-wrap .right-wrap .payout {
   display: inline-block;
   padding: 10px;
   font-size: 2em;
@@ -215,23 +213,23 @@ body {
           box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btc-wrap .right-wrap .bnk-label {
+.btc-wrap .right-wrap .bnk-label, .gfc-wrap .right-wrap .bnk-label {
   display: inline-block;
   width: 100%;
 }
 
-.btc-wrap .right-wrap .bnk-label p {
+.btc-wrap .right-wrap .bnk-label p, .gfc-wrap .right-wrap .bnk-label p {
   background-repeat: no-repeat;
   background-position: -4px -8.7em;
   background-image: url(../img/icon.png);
   background-image: url(../img/icon.svg);
 }
 
-.btc-wrap .right-wrap .bnk-label .right {
+.btc-wrap .right-wrap .bnk-label .right, .gfc-wrap .right-wrap .bnk-label .right {
   background-position: -4px -10.8em;
 }
 
-.btc-wrap .right-wrap .bnk-label > p, .btc-wrap .right-wrap .bnk-btc {
+.btc-wrap .right-wrap .bnk-label > p, .btc-wrap .right-wrap .bnk-btc, .gfc-wrap .right-wrap .bnk-label > p, .gfc-wrap .right-wrap .bnk-btc {
   float: left;
   margin: 10px 0px;
   font-size: 14px;
@@ -239,11 +237,11 @@ body {
   padding-left: 1.8em;
 }
 
-.btc-wrap .right-wrap .bnk-label > .right, .btc-wrap .right-wrap .bnk-btc {
+.btc-wrap .right-wrap .bnk-label > .right, .btc-wrap .right-wrap .bnk-btc, .gfc-wrap .right-wrap .bnk-label > .right, .gfc-wrap .right-wrap .bnk-btc {
   float: right;
 }
 
-.btc-wrap .right-wrap .bnk-btc {
+.btc-wrap .right-wrap .bnk-btc, .gfc-wrap .right-wrap .bnk-btc {
   margin: 0px;
   background-repeat: no-repeat;
   background-position: -4px -3px;
@@ -251,7 +249,7 @@ body {
   background-image: url(../img/icon.svg);
 }
 
-.btc-wrap .right-wrap .convert-btn {
+.btc-wrap .right-wrap .convert-btn, .gfc-wrap .right-wrap .convert-btn {
   width: 35px;
   height: 35px;
   padding: 0px;
@@ -297,5 +295,94 @@ body {
     top: 50%;
     margin-top: -2em;
   }
+}
+
+.gfc-wrap {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.gfc-wrap .left-wrap {
+  display: inline-block;
+}
+
+.gfc-wrap .left-wrap .card-wrap {
+  display: inline-block;
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.gfc-wrap .left-wrap .cards {
+  width: 6em;
+  display: inline-block;
+  padding: 4em 5px 5px;
+  margin: 5px;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center 8px;
+  background-image: url(../img/icon.png);
+  background-image: url(../img/icon.svg);
+  background-image: url(../img/cards/itunes.png);
+  background-size: 6em;
+  background-origin: border-box;
+  border: 1px solid transparent;
+}
+
+.gfc-wrap .left-wrap .cards input {
+  float: right;
+  width: auto;
+}
+
+.gfc-wrap .left-wrap .cards:hover {
+  border: 1px solid #E3E1E1;
+}
+
+.gfc-wrap .left-wrap .cardPicked {
+  border: 1px solid blue;
+}
+
+.gfc-wrap .left-wrap .picker-wrap {
+  border: 2px solid #E3E1E1;
+  margin: 15px 0px;
+  padding: 0px 30px;
+  border-radius: 5px;
+}
+
+.gfc-wrap .left-wrap .picker-wrap select {
+  padding: 10px;
+  padding-left: 40px;
+  font-size: 16px;
+  border: 2px solid #E3E1E1;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  color: #8F8F8F;
+  text-transform: capitalize;
+}
+
+.gfc-wrap .left-wrap .picker-wrap select option {
+  outline: 1px solid blue;
+  font-size: 14px;
+}
+
+.gfc-wrap .left-wrap .picker-wrap select:focus {
+  outline: none;
+}
+
+.gfc-wrap .left-wrap .picked {
+  background-color: blue;
+  border-color: blue;
+  -webkit-box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gfc-wrap .left-wrap .picked select {
+  background-color: transparent;
+  color: white;
+}
+
+.gfc-wrap .left-wrap .picked select option {
+  color: #8F8F8F;
 }
 /*# sourceMappingURL=index.css.map */

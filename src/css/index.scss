@@ -7,11 +7,11 @@ body{
     background-image: url(../img/vect/bottom.svg);
     padding-bottom: 3em;
 }
+p{
+    @include normal_F;
+}
 .switch_func{
     text-align: center;
-    p{
-        @include normal_F;
-    }
     .switch_wrap{
         border: 1px solid transparent;
         display: inline-block;
@@ -40,11 +40,10 @@ body{
         }
     }
 }
-.btc-wrap{
+.btc-wrap,.gfc-wrap{
     padding:10px 0px; 
     text-align: center;
     p{
-        @include normal_F;
         font-weight: normal;
     }
     .left-wrap{
@@ -64,7 +63,7 @@ body{
             font-size:14px;
             margin-left:20px;
         }
-        input{
+        .input{
             @include input_style;
             @include icon_style(left,4px);
             color: $grey2;
@@ -188,6 +187,76 @@ body{
                 margin-top:-2em;
             }
             
+        }
+    }
+}
+
+// giftcard style
+.gfc-wrap{
+    border: 1px solid grey;
+    text-align: center;
+    .left-wrap{
+        display: inline-block;
+        .input{
+            
+        }
+        .card-wrap{
+            display: inline-block;
+            width:100%;
+            overflow: auto;
+            white-space: nowrap;
+        }
+        .cards{
+            width: 6em;
+            display: inline-block;
+            padding: 4em 5px 5px; 
+            margin:5px;
+            border-radius:5px;
+            @include icon_style(center,8px);
+            background-image: url(../img/cards/itunes.png);
+            background-size: 6em;
+            background-origin:border-box;
+            border:1px solid transparent;
+            input{
+                float: right;
+                width: auto;
+            }
+        }
+        .cards:hover{
+            border:1px solid $grey1;
+        }
+        .cardPicked{
+            border: 1px solid blue;
+        }
+        .picker-wrap{
+            border: 2px solid $grey1;
+            margin:15px 0px;
+            padding:0px 30px;
+            @include round(5px);
+            select{
+                @include input_style;
+                border:none;
+                width: 100%;
+                color:$grey2;
+                text-transform: capitalize;
+                option{
+                    outline: 1px solid blue;
+                    font-size: 14px;
+                }
+            }
+            select:focus{outline: none;}
+        }
+        .picked{
+            background-color: blue;
+            border-color: blue;
+            @include shadow;
+            select{
+                background-color: transparent;
+                color:white;
+                option{
+                    color: $grey2;
+                }
+            }
         }
     }
 }

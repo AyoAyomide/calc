@@ -27,6 +27,7 @@ Vue.component("btc-body", {
     <div class="left-wrap">
     <p>Bitcoin</p>
     <input 
+    class="input"
     v-bind:value="btcValue"
     v-on:input="updateInput({type:'btc',value:$event.target.value})"
     placeholder="Enter Bitcoin"
@@ -34,7 +35,7 @@ Vue.component("btc-body", {
     <div class="calculate-wrap"><button></button><p>Calculate</p></div>
     <p>Usd</p>
     <input
-    class="usd"
+    class="usd input"
     v-bind:value="usdValue"
     v-on:input="updateInput({type:'usd',value:$event.target.value})"
     placeholder="Enter Usd"

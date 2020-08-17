@@ -1,6 +1,7 @@
-input:focus,
+input[type=number],
+input[type=text],
 input:hover[type=number]::-webkit-inner-spin-button,
-input:focus,
+input:focus[type=number]::-webkit-inner-spin-button,
 input:hover[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: textfield;
