@@ -5,7 +5,7 @@ Vue.component("gfc-body", {
       btcValue: "",
       usdValue: "",
       companyRate: 410,
-      getJson: fetch(window.location.origin+"/src/json/index.json")
+      getJson: fetch(window.location.origin+"/calc/src/json/index.json")
         .then((response) => response.text())
         .then((text) => {
           sessionStorage.setItem("cards", text);
@@ -120,3 +120,4 @@ Vue.component("select-item", {
     },
   },
 });
+console.log(window.location.pathname)
