@@ -5,7 +5,7 @@ Vue.component("gfc-body", {
       btcValue: "",
       usdValue: "",
       companyRate: 410,
-      getJson: fetch("../src/json/index.json")
+      getJson: fetch(window.location.origin+"/src/json/index.json")
         .then((response) => response.text())
         .then((text) => {
           sessionStorage.setItem("cards", text);
