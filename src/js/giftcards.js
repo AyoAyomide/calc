@@ -1,11 +1,21 @@
 Vue.component("gfc-body", {
-  data:function (){
+  data: function () {
     return {
       payout: "0",
       btcValue: "",
       usdValue: "",
       companyRate: 410,
-    }
+      getJson: fetch("../src/json/index.json")
+        .then((response) => response.text())
+        .then((text) => {
+          sessionStorage.setItem("cards", text);
+        }),
+      cardsJson: JSON.parse(sessionStorage.getItem("cards")).giftCards,
+      cardsCountry: "",
+      cardsType: "",
+      cardsRange:"",
+      cardsRate:""
+    };
   },
   template: `<div class="gfc-wrap">
   <p>Rate Converter</p>
@@ -17,87 +27,83 @@ Vue.component("gfc-body", {
   <div class="bnk-label"><p class="left">Bank Deposit</p><p class="right">{{payout}} NGN</p></div>
   <p class="bnk-btc">{{Math.round(btcValue)}} BTC</p>
   </div>
-
   <div class="left-wrap">
   <input type="text" class="input" placeholder="Enter to search">
-  <gfc-cards></gfc-cards>
-            <select-item options="country"></select-item>
-            <select-item></select-item>
+
+  <gfc-cards 
+  v-bind:giftcards="cardsJson.cards" 
+  v-bind:imgUrl="cardsJson.imgUrl"
+  v-on:changeCountry="cardsCountry={'data':cardsJson.country[$event],'value':$event}"
+  ></gfc-cards>
+
+        <select-item title="pick country" 
+           v-bind:content="cardsCountry.data"
+           v-on:changeType="cardsType={'data':cardsJson.types[cardsCountry.value][$event],'value':$event}"
+        ></select-item>
+
+        <select-item title="pick type" 
+           v-bind:content="cardsType.data" 
+           v-on:changeType="cardsRange={'data':cardsJson.range[cardsCountry.value][cardsType.value],'value':'hry'}"
+        ></select-item>
+
+        <select-item title="pick range" 
+           v-bind:content="cardsRange.data" 
+           v-on:changeType="cardsRate='change rate'"
+        ></select-item>
+
             <input type="number" class="input usd" placeholder="Enter amount">
             </div>
+           
         </div>
         `,
 });
 Vue.component("gfc-cards", {
   props: {
     title: "",
+    giftcards: "",
+    imgUrl:"",
   },
   data: function () {
     return {
-      cloud_src:"https://res.cloudinary.com/db5t0lizu/image/upload/",
-      giftCards: [
-        { title: "itunes",style:'',img_id:'v1597674846/cards/itunes_vhi2q9.png'},
-        { title: "amazon",style:'',img_id:'v1597674846/cards/amazon_fnmlpb.png'},
-        { title: "google play",style:'',img_id:'v1597674847/cards/googleplay_igcnab.png'},
-      ],
+      cloud_src: "https://res.cloudinary.com/db5t0lizu/image/upload/"
     };
   },
   template: `<div class="card-wrap">
             <div 
-            v-for="(cards,index) in giftCards"
+            v-for="(cards,index) in giftcards"
             v-bind:key="cards.index"
-            v-bind:title="cards.title"
+            v-bind:title="cards"
             class="cards"
-            v-bind:class="cards.style"
             >
-            <div class="card_img" v-bind:class="cards.title" v-bind:style="{'background-image':'url('.concat(cloud_src,cards.img_id)+')'}"></div>
+            <div class="card_img" v-bind:class="cards" v-bind:style="{'background-image':'url('.concat(cloud_src,imgUrl[index])+')'}"></div>
                 <input 
                 type="radio" name="card"
-                v-bind:value="cards.title"
-                v-on:change="getChange({value:$event.target.value,index:index})">
-                <label>{{cards.title}}</label>
+                v-bind:value="cards"
+                v-on:change="$emit('changeCountry',$event.target.value);getChange({value:$event.target.value,index:index})">
+                <label>{{cards}}</label>
             </div>
         </div>
         `,
   methods: {
     getChange: function (event) {
-      let picked = this.giftCards[event.index];
-      this.giftCards.forEach(element => {
-        element.style = '';
-      });
+      let picked = this.giftcards[event.index];
       picked.style = "cardPicked";
       console.log(event.value);
     },
   },
 });
 Vue.component("select-item", {
-  props:['options'],
+  props: ["title", "content"],
   data: function () {
-    if (this.options == "country") {
-      return {
-        active : '',
-        item: {
-          title:'pick country',
-          selected: "",
-          names: ["Usa", "China", "Uk", "canada"],
-        },
-      };
-    } else {
-      return {
-        active : '',
-        item: {
-          title:'pick type',
-          selected: "",
-          names: ["Type 1", "Type2", "Type3"],
-        },
-      };
-    }
+    return {
+      active: "",
+    };
   },
   template: `<div class="picker-wrap" v-bind:class="active">
         <select v-on:change="itemSelected($event.target.value)">
-          <option value="">{{item.title}}</option>
+          <option value="">{{title}}</option>
           <option 
-          v-for="(items,index) in item.names"
+          v-for="(items,index) in content"
           v-bind:value="items"
           v-bind:options_index="index"
           >
@@ -108,7 +114,8 @@ Vue.component("select-item", {
       `,
   methods: {
     itemSelected: function (value) {
-      this.active = value != '' ? 'picked' : '';
+      this.active = value != "" ? "picked" : "";
+      this.$emit("changeType",value);
       console.log(value);
     },
   },
