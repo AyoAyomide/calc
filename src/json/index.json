@@ -1,58 +1,108 @@
 {
   "giftCards": {
-    "cards": ["itunes", "amazon", "steam"],
+    "cards": [
+      "itunes",
+      "amazon",
+      "Google Play"
+    ],
     "imgUrl": [
       "v1597674846/cards/itunes_vhi2q9.png",
       "v1597674846/cards/amazon_fnmlpb.png",
       "v1597674847/cards/googleplay_igcnab.png"
     ],
     "country": {
-      "itunes": ["usa", "uk", "euro"],
-      "amazon": ["uk", "usa"],
-      "steam": ["usa", "uk"]
+      "itunes": [
+        "usa",
+        "uk",
+        "euro"
+      ],
+      "amazon": [
+        "uk",
+        "usa"
+      ],
+      "Google Play": [
+        "usa",
+        "uk"
+      ]
     },
     "types": {
       "itunes": {
-        "usa": ["physical", "ecode"],
-        "uk": ["physical"],
-        "euro": ["physical"]
+        "usa": [
+          "physical",
+          "ecode"
+        ],
+        "uk": [
+          "physical"
+        ],
+        "euro": [
+          "physical"
+        ]
       },
       "amazon": {
-        "uk": ["physical"],
-        "usa": ["physical"]
+        "uk": [
+          "physical"
+        ],
+        "usa": [
+          "physical"
+        ]
       },
-      "steam": {
-        "uk": ["physical"],
-        "usa": ["physical"]
+      "Google Play": {
+        "uk": [
+          "physical"
+        ],
+        "usa": [
+          "physical"
+        ]
       }
     },
     "range": {
       "itunes": {
-        "usa": ["25-100", "150-200"],
-        "uk": ["30-100", "40-200"],
-        "euro": ["30-100", "120-200"]
+        "usa": [
+          "25-100",
+          "150-200"
+        ],
+        "uk": [
+          "30-100",
+          "40-200"
+        ],
+        "euro": [
+          "30-100",
+          "120-200"
+        ]
       },
       "amazon": {
-        "uk": ["25-100", "150-200"],
-        "usa": ["30-100", "120-200"]
+        "uk": [
+          "25-100",
+          "150-200"
+        ],
+        "usa": [
+          "30-100",
+          "120-200"
+        ]
       },
-      "steam": {
-        "uk": ["25-100", "150-200"],
-        "usa": ["30-100", "120-200"]
+      "Google Play": {
+        "uk": [
+          "25-100",
+          "150-200"
+        ],
+        "usa": [
+          "30-100",
+          "120-200"
+        ]
       }
     },
     "rate": {
       "itunes": {
-        "usa": {
-          "range1": {
-            "physical": 260,
-            "ecode": 280
+        "usa": [
+          {
+            "physical": 240,
+            "ecode": 260
           },
-          "range2": {
-            "physical": 230,
-            "ecode": 240
+          {
+            "physical": 250,
+            "ecode": 280
           }
-        },
+        ],
         "uk": {
           "range1": {
             "physical": 260
