@@ -1,0 +1,43 @@
+{
+  "cardList":{
+    "0":{
+      "name":"itunes",
+      "imgUrl":"url"
+    },
+    "1":{
+      "name":"amazon",
+      "imgUrl":"url"
+    }
+  },
+  "cardInfo": {
+    "itunes": {
+      "country": {
+        "usa": {
+          "20-100": {
+            "physical": 240,
+            "ecode": 260
+          },
+          "150-200": {
+            "physical": 200,
+            "ecode": 210
+          }
+        },
+        "uk": {
+          "30-100":{
+            "physical":230
+          }
+        }
+      }
+    },
+    "amazon": {
+      "country":{
+        "usa":{
+          "20-100":{
+            "physical": 200,
+            "ecode": 210
+          }
+        }
+      }
+    }
+  }
+}
